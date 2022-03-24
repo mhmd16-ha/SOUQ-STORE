@@ -14,6 +14,7 @@ namespace SOUQ_STORE.Models
         public string? Name { get; set; }
         public string Photo { get; set; } = null!;
         public string? Description { get; set; }
+        public string? DataFilter { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
     }

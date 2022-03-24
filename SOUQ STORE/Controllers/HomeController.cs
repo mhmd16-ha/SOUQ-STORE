@@ -6,21 +6,37 @@ namespace SOUQ_STORE.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        //private readonly SOUQContext _context;
 
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
+        //public HomeController(SOUQContext context)
+        //{
+        //    _context = context;
+        //}
 
         public IActionResult Index()
         {
-            return View();
+            SOUQContext _context = new SOUQContext();
+             _context.Categories.ToList();
+            _context.Products.ToList();
+
+
+
+            return View(_context);
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+        public IActionResult Cart()
+        {
+            return View();
+        }
+        public IActionResult Categories()
+        {
+            SOUQContext _context = new SOUQContext();
+           var Result=_context.Categories.ToList();
+            return View(Result);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
