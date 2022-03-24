@@ -30,6 +30,11 @@ namespace SOUQ_STORE.Models
             }
         }
 
+        internal object? GetAllLookupKey()
+        {
+            throw new NotImplementedException();
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Card>(entity =>

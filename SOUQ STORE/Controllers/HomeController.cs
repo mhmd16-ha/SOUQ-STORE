@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using SOUQ_STORE.Models;
 using System.Diagnostics;
 
@@ -19,11 +20,18 @@ namespace SOUQ_STORE.Controllers
              _context.Categories.ToList();
             _context.Products.ToList();
 
-
-
             return View(_context);
         }
+        public IActionResult Product(int Id)
+        {
+        
+            SOUQContext _context = new SOUQContext();
+            var result = _context.Products.Find(Id);
+            //var pr = _context.Products.Where(x => x.CatId == Id).OrderByDescending(x => x.Name).ToList();
 
+            return View(result);
+        }
+      
         public IActionResult Privacy()
         {
             return View();
