@@ -2,11 +2,7 @@
     Layout = null;
 }
 
-@model Product
-
-
-
-
+@model SOUQ_STORE.Models.Product
 
 <!DOCTYPE html>
 <html lang="en">
@@ -112,16 +108,16 @@
             <div class="portfolio-info">
               <h3>Product Information</h3>
               <ul>              
-                <li><strong>Category </strong>:  @ViewData["cat"]</li>
+                @*<li><strong>Category </strong>:  @Html.DisplayFor(model => model.Cat.Name)</li>*@
                 <li><strong>Product Name </strong>:  @Model?.Name</li>
                 <li><strong>Price </strong>:  @Model?.Price</li>
                 <li><strong>Project date </strong>: 01 March, 2020</li>
               </ul>
             </div>
             <div class="portfolio-description">
-              <h2>This is an example of portfolio detail</h2>
+              <h2>This is an Description of Product detail</h2>
               <p>
-                Autem ipsum nam porro corporis rerum. Quis eos dolorem eos itaque inventore commodi labore quia quia. Exercitationem repudiandae officiis neque suscipit non officia eaque itaque enim. Voluptatem officia accusantium nesciunt est omnis tempora consectetur dignissimos. Sequi nulla at esse enim cum deserunt eius.
+                  @Model?.Description
               </p>
             </div>
           </div>

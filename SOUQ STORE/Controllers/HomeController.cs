@@ -18,24 +18,22 @@ namespace SOUQ_STORE.Controllers
         {
             SOUQContext _context = new SOUQContext();
              _context.Categories.ToList();
-            _context.Products.ToList();
+             _context.Products.ToList();
 
             return View(_context);
         }
         public IActionResult Product(int Id)
-        {
-        
+        { 
             SOUQContext _context = new SOUQContext();
-            Category c = _context.Categories.Find(Id);
-            ViewData["cat"] = c.Name;
             var result = _context.Products.Find(Id);
-
-
-            //var pr = _context.Products.Where(x => x.CatId == Id).OrderByDescending(x => x.Name).ToList();
-
             return View(result);
         }
-      
+        public IActionResult Products(int id)
+        {
+            SOUQContext _context = new SOUQContext();
+            var Result = _context.Products.Where(x => x.CatId == id).OrderByDescending(x => x.Name).ToList();
+            return View(Result);
+        }
         public IActionResult Privacy()
         {
             return View();

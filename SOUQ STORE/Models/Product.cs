@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SOUQ_STORE.Models
 {
@@ -16,8 +17,8 @@ namespace SOUQ_STORE.Models
         public decimal? Price { get; set; }
         public int? CatId { get; set; }
         public string? Photo { get; set; }
-
-        public virtual Category? Cat { get; set; }
+        [ForeignKey("CatId")]
+        public  Category? Cat { get; set; }
         public virtual ICollection<Card> Cards { get; set; }
     }
 }
