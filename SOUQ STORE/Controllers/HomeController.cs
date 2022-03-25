@@ -31,6 +31,8 @@ namespace SOUQ_STORE.Controllers
         public IActionResult Products(int id)
         {
             SOUQContext _context = new SOUQContext();
+            Category c=_context.Categories.Find(id);
+            ViewBag.Cat = c.Name;
             var Result = _context.Products.Where(x => x.CatId == id).OrderByDescending(x => x.Name).ToList();
             return View(Result);
         }
