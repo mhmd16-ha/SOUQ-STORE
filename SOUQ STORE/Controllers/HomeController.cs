@@ -19,6 +19,7 @@ namespace SOUQ_STORE.Controllers
             SOUQContext _context = new SOUQContext();
              _context.Categories.ToList();
              _context.Products.ToList();
+           
 
             return View(_context);
         }
@@ -39,6 +40,14 @@ namespace SOUQ_STORE.Controllers
         public IActionResult Privacy()
         {
             return View();
+        }
+        [HttpPost]
+        public IActionResult SaveReviews(Review review)
+        {
+            SOUQContext _context = new SOUQContext();
+            _context.Add(review);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
         }
         public IActionResult Cart()
         {
