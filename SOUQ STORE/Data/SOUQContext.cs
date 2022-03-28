@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
+using SOUQ_STORE.Models;
 
-namespace SOUQ_STORE.Models
+namespace SOUQ_STORE.Data
 {
     public partial class SOUQContext : DbContext
     {
-        public SOUQContext()
-        {
-        }
-
         public SOUQContext(DbContextOptions<SOUQContext> options)
             : base(options)
         {
@@ -21,22 +15,27 @@ namespace SOUQ_STORE.Models
         public virtual DbSet<Product> Products { get; set; } = null!;
         public virtual DbSet<Review> Reviews { get; set; } = null!;
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if (!optionsBuilder.IsConfigured)
-            {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Server=.\\SQLExpress;Database=SOUQ;Trusted_Connection=True;");
-            }
-        }
-
-        internal object? GetAllLookupKey()
-        {
-            throw new NotImplementedException();
-        }
-
+        //Seeded Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Product>()
+                .HasData(new Product
+                {
+                    Id = 1,
+                    Name = "Product 1"
+                },
+                new Product
+                {
+                    Id = 2,
+                    Name = "Product 2"
+                },
+                new Product
+                {
+                    Id = 3,
+                    Name = "Product 3"
+                });
+
+
             modelBuilder.Entity<Card>(entity =>
             {
                 entity.ToTable("Card");
