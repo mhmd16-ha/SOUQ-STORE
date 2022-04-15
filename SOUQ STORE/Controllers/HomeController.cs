@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SOUQ_STORE.Models;
 using System.Diagnostics;
@@ -13,7 +14,7 @@ namespace SOUQ_STORE.Controllers
         //{
         //    _context = context;
         //}
-
+        [Authorize]
         public IActionResult Index()
         {
             SOUQContext _context = new SOUQContext();
